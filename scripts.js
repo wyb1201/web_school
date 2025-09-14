@@ -39,7 +39,7 @@ $(function () {
       },
       error: function () {
         $('#chatbox').append(
-          `<div class="ai-message"><strong>小智:</strong> 出现错误，请重试（如在 GitHub Pages 上预览，此功能需要后端）</div>`
+          `<div class="ai-message"><strong>小智:</strong> 出现错误，请重试（此功能需要后端）</div>`
         );
       }
     });
