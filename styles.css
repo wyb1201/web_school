@@ -1,140 +1,80 @@
-
-body {
-    background-color: #f2f2f2;
+/* 配色与基础 */
+:root {
+  --brand: #0dcaf0;            /* 主色：信息蓝 */
+  --ink: #18191C;              /* 深色文字 */
+  --muted: #6c757d;            /* 次级文字 */
+  --card-bg: #ffffff;          /* 卡片底色 */
+  --soft: rgba(13, 202, 240, .08);
 }
 
+/* 顶栏 */
 .nav-cus {
-    height: 64px;
-    background-color: white;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
 }
-
-.sidebar {
-    width: 500px;
-    background-color: rgba(51, 51, 51, 0.9);
-    color: white;
-    position: fixed;
-    height: 100%;
-    left: -500px;
-    transition: left 0.3s;
-    z-index: 1000;
-    padding: 15px;
-    margin-top: 64px;
-}
-
-.sidebar.open {
-    left: 0;
-}
-
-.close-btn {
-    background-color: transparent; /*透明*/
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer; /*手型光标*/
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.brand-cus {
-    font-family: SimSun;
-    font-weight: bold;
-}
-
-.th-cus {
-    font-weight: lighter;
-    font-size: 13px;
-    color: #61666D;
-}
-
-.video {
-    position: relative;
-    height: 540px;
-    background: white;
-}
-
-.ckplayer-prompt {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    display: none; /* Initially hidden */
-}
-
-.container-cus {
-    width: 1380px;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
+.brand-cus { color: var(--ink); letter-spacing: .5px; }
 .btn-cus {
-    border-color: #FB7299;
-    color: #FB7299;
-    --bs-btn-hover-border-color: #FB7299;
-    --bs-btn-hover-color: rgb(253, 163, 188);
-    --bs-btn-active-color: rgb(253, 163, 188);
-    --bs-btn-active-border-color: #FB7299;
+  border: 1px solid rgba(13,202,240,.3);
+  color: var(--ink);
+  background: var(--soft);
+}
+.btn-cus:hover {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 .15rem rgba(13,202,240,.15);
 }
 
-.user-message {
-    background-color: #d1e7dd;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 5px 0;
-    font-size: 14px;
-    overflow-wrap: break-word;
+/* 侧边栏 */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 320px; height: 100vh;
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,.06);
+  transform: translateX(-100%);
+  transition: transform .28s ease;
+  z-index: 1100;
+}
+.sidebar.open { transform: translateX(0); }
+.close-btn {
+  position: absolute; top: 14px; right: 14px;
+  background: transparent; border: 0; font-size: 28px; line-height: 1;
 }
 
-.ai-message {
-    background-color: #f8d7da;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 5px 0;
-    font-size: 14px;
-    overflow-wrap: break-word;
-}
+/* 页面容器 */
+.container-cus { max-width: 1200px; margin: 0 auto; }
 
-.row {
-    display: flex;
+/* 播放器外观 */
+.player-frame {
+  background: linear-gradient(180deg, #f8fbfd 0%, #f3f9fb 100%);
+  border: 1px solid rgba(13,202,240,.25);
 }
+.player-frame .placeholder { font-size: 14px; }
 
-.custom-col-md-7 {
-    flex: 0 0 71%;
-    max-width: 71%;
-    display: flex;
-    flex-direction: column; /* 使内容垂直排列 */
-}
+/* 表格与折叠 */
+#dg thead th { color: var(--muted); font-weight: 600; }
+#dg tbody td { vertical-align: middle; }
+.accordion .accordion-button { border-radius: 10px !important; }
 
-.custom-col-md-3 {
-    flex: 0 0 29%;
-    max-width: 29%;
-    /*min-height: 800px;*/
-}
-
+/* 聊天区 */
 #ai {
-    background-color: white;
-    min-height: 500px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
 }
-
 #chatbox {
-    flex-grow: 1; /* 允许它根据内容扩展 */
-    min-height: 450px; /* 确保有最小高度 */
-    max-height: 4500px; /* 限制最大高度 */
-    overflow-y: auto; /* 确保有滚动条 */
-    background-color: white; /* 确保背景颜色 */
+  max-height: 320px; overflow: auto;
+  display: flex; flex-direction: column; gap: .5rem;
 }
+.ai-message, .user-message {
+  background: #fff; border: 1px solid rgba(0,0,0,.06);
+  border-radius: 10px; padding: .6rem .8rem; font-size: 14px;
+}
+.ai-message { background: linear-gradient(0deg, #fff, #fff), var(--soft); }
+.user-message { border-color: rgba(13,202,240,.2); }
 
-#panelsStayOpen-collapseOne {
-    overflow: auto;
-    max-height: 200px;
-}
+/* 小细节 */
+.th-cus { font-size: 13px; }
+.footer { border-top: 1px solid rgba(0,0,0,.06); }
 
-#intro {
-    color: rgba(0, 0, 0, 0.26);
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    margin-top: 4px;
-}
+/* 全局按钮圆角小优化（可选） */
+.btn { border-radius: 12px; }
