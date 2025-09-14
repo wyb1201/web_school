@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <title>智析-考研政治网课分析工具</title>
 
-  <!-- 样式 -->
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="./ckplayer.css" />
+  <!-- 样式（顺序：框架 -> 组件 -> 自定义） -->
   <link rel="stylesheet" href="./bootstrap.css" />
+  <link rel="stylesheet" href="./ckplayer.css" />
+  <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
 
-  <!-- 基础脚本（jQuery 可留作你的现有逻辑使用） -->
+  <!-- 基础脚本（jQuery 留给你现有逻辑使用） -->
   <script src="./jquery-3.7.1.js"></script>
   <!-- Bootstrap 5：bundle 已包含 Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -37,8 +37,9 @@
   <button class="close-btn" onclick="toggleSidebar()">×</button>
   <div style="height: 100px;"></div>
 
-  <label for="keyInput" class="form-label ps-4 pe-3">请输入 OpenAI API 密钥</label>
-  <div class="input-group ps-4 pe-3" id="keyInput">
+  <!-- 修复点：label 的 for 指向 input 的 id="key" -->
+  <label for="key" class="form-label ps-4 pe-3">请输入 OpenAI API 密钥</label>
+  <div class="input-group ps-4 pe-3">
     <input type="text" class="form-control" placeholder="OpenAI API 密钥"
            aria-label="OpenAI API 密钥" aria-describedby="button-addon2" id="key" />
     <button class="btn btn-outline-secondary" type="button" id="button-addon2">
@@ -174,7 +175,7 @@
         </div>
       </div>
 
-      <div style="height: 13px"></div>
+      <div style="height: 13px;"></div>
 
       <!-- ai答疑 -->
       <div style="font-size: 18px;">
